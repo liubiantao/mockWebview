@@ -1,9 +1,84 @@
 <html>
+  <style type="text/css">
+    .group {
+      width: 100%;
+    }
+    .group > div {
+      width: 49%;
+      height: 70px;
+      padding: 10px;
+      margin: 2px;
+      border: 1px solid #2315c8;
+    }
+    .students {
+      width: 100%;
+      height: 70px;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #aaaaaa;
+    }
+    .student {
+      display: inline;
+      border: 1px solid #aaaaaa;
+      padding: 10px;
+      margin: 2px;
+      background: aliceblue;
+    }
+  </style>
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault()
+    }
+    function drag(ev) {
+      ev.dataTransfer.setData('Text', ev.target.id)
+    }
+    function drop(ev) {
+      ev.preventDefault()
+      var data = ev.dataTransfer.getData('Text')
+      ev.target.appendChild(document.getElementById(data))
+    }
+  </script>
   <body>
     <h1>
       mock AIGE
     </h1>
+    <p>请把需要分组的学生拖放到蓝色矩形中：</p>
 
+    <div class="students" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div id="stu1" class="student" draggable="true" ondragstart="drag(event)">
+        学生1
+      </div>
+      <div id="stu2" class="student" draggable="true" ondragstart="drag(event)">
+        学生2
+      </div>
+      <div id="stu3" class="student" draggable="true" ondragstart="drag(event)">
+        学生3
+      </div>
+      <div id="stu4" class="student" draggable="true" ondragstart="drag(event)">
+        学生4
+      </div>
+      <div id="stu5" class="student" draggable="true" ondragstart="drag(event)">
+        学生5
+      </div>
+      <div id="stu6" class="student" draggable="true" ondragstart="drag(event)">
+        学生6
+      </div>
+    </div>
+
+    <div class="group">
+      <div id="group1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="group2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="group3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <br />
+    <button id="begin">beginGroup</button>
+    <button id="end">endGroup</button>
+    <br />
+    <br />
+    <br />
+    <button id="mute">muteMicrophone</button>
+    <button id="unmute">unmuteMicrophone</button>
     <script src="./aige.js"></script>
   </body>
 </html>
