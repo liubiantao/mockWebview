@@ -1,6 +1,5 @@
 const pathname = window.location.pathname
 
-console.warn(pathname)
 if (pathname.includes('aige')) {
   window.location.replace(`${window.location.origin}/aige.html`)
 }
